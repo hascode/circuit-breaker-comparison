@@ -16,7 +16,7 @@ import net.jodah.failsafe.RetryPolicy;
 public class FailsafeExample {
 
     public static void main(String[] args) throws Exception {
-        UnstableApplication app = new UnstableApplication(4);
+        UnstableApplication app = new UnstableApplication();
 
         CircuitBreaker breaker = new CircuitBreaker().withFailureThreshold(2).withSuccessThreshold(5).withDelay(1,
                 TimeUnit.SECONDS);

@@ -5,15 +5,11 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class UnstableApplication {
-    private final int fails;
+    private final int MAX_FAILS = 4;
     private AtomicInteger failCount = new AtomicInteger(1);
 
-    public UnstableApplication(int fails) {
-        this.fails = fails;
-    }
-
     public String generateId() throws SampleException {
-        if (failCount.getAndIncrement() < fails) {
+        if (failCount.getAndIncrement() < MAX_FAILS) {
             throw new SampleException();
         }
 

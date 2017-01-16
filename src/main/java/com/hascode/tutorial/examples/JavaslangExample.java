@@ -10,15 +10,18 @@ import io.github.robwin.circuitbreaker.CircuitBreakerConfig;
 import io.github.robwin.decorators.Decorators;
 import javaslang.control.Try;
 
+/**
+ * Sample code for Javaslang: https://github.com/RobWin/javaslang-circuitbreaker
+ */
 public class JavaslangExample {
 
     public static void main(String[] args) throws Exception {
-        UnstableApplication app = new UnstableApplication(4);
+        UnstableApplication app = new UnstableApplication();
 
         CircuitBreakerConfig breakerConfig = CircuitBreakerConfig.custom().ringBufferSizeInClosedState(2)
                 .ringBufferSizeInHalfOpenState(2).failureRateThreshold(50)
                 .waitDurationInOpenState(Duration.ofMillis(1000)).build();
-        CircuitBreaker breaker = CircuitBreaker.of("unstableApp", breakerConfig);
+        CircuitBreaker breaker = CircuitBreaker.of("unstableAppBreaker", breakerConfig);
 
         Try.CheckedSupplier<String> decoratedSupplier = Decorators.ofCheckedSupplier(app::generateId)
                 .withCircuitBreaker(breaker).decorate();
