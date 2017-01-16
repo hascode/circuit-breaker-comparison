@@ -5,11 +5,15 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class UnstableApplication {
-    private static final int FAILS = 4;
+    private final int fails;
     private AtomicInteger failCount = new AtomicInteger(1);
 
+    public UnstableApplication(int fails) {
+        this.fails = fails;
+    }
+
     public String generateId() throws SampleException {
-        if (failCount.getAndIncrement() < FAILS) {
+        if (failCount.getAndIncrement() < fails) {
             throw new SampleException();
         }
 
@@ -18,4 +22,5 @@ public class UnstableApplication {
 
         return id;
     }
+
 }

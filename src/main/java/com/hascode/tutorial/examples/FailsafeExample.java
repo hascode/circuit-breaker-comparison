@@ -1,7 +1,9 @@
-package com.hascode.tutorial;
+package com.hascode.tutorial.examples;
 
 import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
+
+import com.hascode.tutorial.UnstableApplication;
 
 import net.jodah.failsafe.CircuitBreaker;
 import net.jodah.failsafe.CircuitBreakerOpenException;
@@ -14,7 +16,7 @@ import net.jodah.failsafe.RetryPolicy;
 public class FailsafeExample {
 
     public static void main(String[] args) throws Exception {
-        UnstableApplication app = new UnstableApplication();
+        UnstableApplication app = new UnstableApplication(4);
 
         CircuitBreaker breaker = new CircuitBreaker().withFailureThreshold(2).withSuccessThreshold(5).withDelay(1,
                 TimeUnit.SECONDS);
