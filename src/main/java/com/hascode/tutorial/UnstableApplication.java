@@ -10,6 +10,7 @@ public class UnstableApplication {
 
     public String generateId() throws SampleException {
         if (failCount.getAndIncrement() < MAX_FAILS) {
+            System.err.printf("UnstableApplication throws SampleException at '%s'\n", ZonedDateTime.now());
             throw new SampleException();
         }
 

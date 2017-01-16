@@ -42,7 +42,7 @@ public class VertxExample {
                 }
             }).setHandler(id -> {
                 if (id.succeeded())
-                    System.out.printf("FailsafeExample: id '%s' received at '%s'\n", id, ZonedDateTime.now());
+                    System.out.printf("VertxExample: id '%s' received at '%s'\n", id, ZonedDateTime.now());
             });
         }
 
