@@ -9,9 +9,29 @@ Examples for integrating different Java circuit-breaker implementations into an 
 * [Vert.x Circuit Breaker] 
 
 ## Running the Examples
-###Failsafe
+
+### Failsafe
+
 ```
 $ mvn exec:java -Dexec.mainClass=com.hascode.tutorial.FailsafeExample
+```
+
+### Javaslang
+
+```
+$ mvn exec:java -Dexec.mainClass=com.hascode.tutorial.JavaslangExample
+```
+
+### Hystrix
+
+```
+$ mvn exec:java -Dexec.mainClass=com.hascode.tutorial.HystrixExample
+```
+
+### Vert.x
+
+```
+$ mvn exec:java -Dexec.mainClass=com.hascode.tutorial.VertxExample
 ```
 
 ## More
